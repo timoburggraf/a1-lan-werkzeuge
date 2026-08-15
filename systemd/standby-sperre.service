@@ -1,12 +1,12 @@
 [Unit]
 Description=Standby-Sperre — haelt den Laptop wach, solange der A1 druckt
-Documentation=file:///home/timoburggraf/projects/BambuLab_AI/README.md
+Documentation=file://%h/projects/BambuLab_AI/README.md
 After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/home/timoburggraf/projects/BambuLab_AI/sperre.sh
-WorkingDirectory=/home/timoburggraf/projects/BambuLab_AI
+ExecStart=%h/projects/BambuLab_AI/sperre.sh
+WorkingDirectory=%h/projects/BambuLab_AI
 Restart=always
 RestartSec=60
 

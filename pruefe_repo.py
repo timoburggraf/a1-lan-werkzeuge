@@ -31,6 +31,9 @@ MUSTER = [
      re.compile(r"(?:ACCESS_CODE|access_code|passwort|password)\s*[=:]\s*"
                 r"['\"][^'\"$({\s]{6,}['\"]")),
     ("privater Schluessel", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
+    # Kein Geheimnis, aber der Nutzername gehoert nicht in ein oeffentliches
+    # Repo — und ein harter Heimatpfad macht die Dateien fuer andere unbrauchbar.
+    ("harter Heimatpfad", re.compile(r"/home/[a-z][a-z0-9_-]{2,}/")),
 ]
 
 # Stellen, an denen ein Treffer erklaerbar ist: Platzhalter in der Doku und

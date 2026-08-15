@@ -1,12 +1,12 @@
 [Unit]
 Description=Stoerungs-Quittierer — drueckt bekannte Filamentfehler am A1 weg (max 3/10min)
-Documentation=file:///home/timoburggraf/projects/BambuLab_AI/README.md
+Documentation=file://%h/projects/BambuLab_AI/README.md
 After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/home/timoburggraf/projects/BambuLab_AI/quittierer.sh
-WorkingDirectory=/home/timoburggraf/projects/BambuLab_AI
+ExecStart=%h/projects/BambuLab_AI/quittierer.sh
+WorkingDirectory=%h/projects/BambuLab_AI
 Environment=DISPLAY=:1
 Environment=XDG_RUNTIME_DIR=/run/user/1000
 Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus

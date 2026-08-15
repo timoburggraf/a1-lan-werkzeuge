@@ -1,13 +1,13 @@
 [Unit]
 Description=Spaghetti-Wache — prueft Kamera und Zustand des A1 auf Fehldrucke
-Documentation=file:///home/timoburggraf/projects/BambuLab_AI/README.md
+Documentation=file://%h/projects/BambuLab_AI/README.md
 # Ohne Netz kein Drucker und keine API.
 After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/home/timoburggraf/projects/BambuLab_AI/lauf.sh
-WorkingDirectory=/home/timoburggraf/projects/BambuLab_AI
+ExecStart=%h/projects/BambuLab_AI/lauf.sh
+WorkingDirectory=%h/projects/BambuLab_AI
 
 # Nur noch fuer die Desktop-Meldung und den Ton — Bilder kommen jetzt direkt
 # vom Drucker, nicht mehr vom Bildschirm.
