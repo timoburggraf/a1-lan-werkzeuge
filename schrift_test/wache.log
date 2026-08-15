@@ -1,0 +1,17 @@
+11:49:20  === Schrift-Testdruck: Begleitung ===
+11:49:22  RUNNING Schicht 0/47 0%
+11:57:11  RUNNING Schicht 1/47 7%
+11:57:13    Belegbild Schicht 1
+12:03:35  RUNNING Schicht 2/47 14%
+12:08:32  RUNNING Schicht 3/47 19%
+12:08:34    Belegbild Schicht 3
+12:12:49  RUNNING Schicht 4/47 24%
+12:17:02  RUNNING Schicht 5/47 29%
+12:21:18  RUNNING Schicht 6/47 34%
+12:26:50  RUNNING Schicht 7/47 37%
+12:26:52    Belegbild Schicht 7
+12:29:42  RUNNING Schicht 8/47 42%
+12:31:07  RUNNING Schicht 9/47 43%
+12:31:50  RUNNING Schicht 10/47 43%
+12:32:32  >>> Ende: FAILED bei Schicht 10
+12:33:01  === Schluss: FAILED, schrifttest, Schicht 10/47, 0% ===

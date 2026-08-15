@@ -1,0 +1,213 @@
+{
+    "error_string": "Success.",
+    "export_time": 920,
+    "layer_height": 0.11999999731779099,
+    "plate_index": 0,
+    "prepare_time": 100,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bottom surface": 344.54962158203125,
+                "Bridge": 505.1669616699219,
+                "Custom": 395.6769714355469,
+                "Flush": 3601.832275390625,
+                "Gap infill": 753.7327270507813,
+                "Inner wall": 3975.39990234375,
+                "Internal solid infill": 2340.21826171875,
+                "Outer wall": 8539.96875,
+                "Prime tower": 6696.71533203125,
+                "Sparse infill": 2693.2216796875,
+                "Support": 2509.864013671875,
+                "Support interface": 161.27978515625,
+                "Support transition": 239.7491912841797,
+                "Top surface": 484.7854919433594,
+                "Travel": 5609.93310546875,
+                "Undefined": 5592.78369140625
+            },
+            "filament_change_times": 38,
+            "filaments": [
+                {
+                    "filament_id": "GFL03",
+                    "id": 1,
+                    "main_used_g": 85.18505859375,
+                    "total_used_g": 120.97590637207031
+                },
+                {
+                    "filament_id": "GFG99",
+                    "id": 3,
+                    "main_used_g": 0.5514630675315857,
+                    "total_used_g": 6.992776870727539
+                }
+            ],
+            "generate_support_material_time": 898,
+            "id": 1,
+            "infill_time": 847,
+            "layer_filament_change": 0,
+            "main_predication": 28140.375,
+            "make_perimeters_time": 668,
+            "obj_cached_cnt": 0,
+            "objects": [
+                {
+                    "bbox": {
+                        "depth": 120.0,
+                        "height": 58.00000762939453,
+                        "width": 35.0,
+                        "x": 197.0,
+                        "y": 112.0,
+                        "z": 0.0
+                    },
+                    "id": 139,
+                    "name": "Gehaeuse_Korpus.stl",
+                    "triangle_count": 33432
+                },
+                {
+                    "bbox": {
+                        "depth": 45.000003814697266,
+                        "height": 33.51686096191406,
+                        "width": 33.5168571472168,
+                        "x": 140.983154296875,
+                        "y": 186.99998474121094,
+                        "z": -1.500000238418579
+                    },
+                    "id": 150,
+                    "name": "Front_Blende.stl",
+                    "triangle_count": 5344
+                },
+                {
+                    "bbox": {
+                        "depth": 120.0,
+                        "height": 13.500003814697266,
+                        "width": 35.000003814697266,
+                        "x": 138.00001525878906,
+                        "y": 43.0,
+                        "z": 0.0
+                    },
+                    "id": 161,
+                    "name": "Gehaeuse_Front.stl",
+                    "triangle_count": 9034
+                },
+                {
+                    "bbox": {
+                        "depth": 104.5,
+                        "height": 6.200001239776611,
+                        "width": 29.200002670288086,
+                        "x": 84.80001831054688,
+                        "y": 127.49999237060547,
+                        "z": 0.0
+                    },
+                    "id": 172,
+                    "name": "PCB_Halter.stl",
+                    "triangle_count": 630
+                },
+                {
+                    "bbox": {
+                        "depth": 78.10000610351563,
+                        "height": 6.2000017166137695,
+                        "width": 29.600004196166992,
+                        "x": 84.40001678466797,
+                        "y": 23.999996185302734,
+                        "z": 0.0
+                    },
+                    "id": 183,
+                    "name": "Rastzunge.stl",
+                    "triangle_count": 936
+                },
+                {
+                    "bbox": {
+                        "depth": 29.0,
+                        "height": 5.700004577636719,
+                        "width": 25.0000057220459,
+                        "x": 206.99998474121094,
+                        "y": 59.0,
+                        "z": 0.0
+                    },
+                    "id": 194,
+                    "name": "Klemmen_Abdeckung.stl",
+                    "triangle_count": 4040
+                },
+                {
+                    "bbox": {
+                        "depth": 19.999996185302734,
+                        "height": 18.0,
+                        "width": 20.0,
+                        "x": 40.80002975463867,
+                        "y": 132.31036376953125,
+                        "z": 0.0
+                    },
+                    "id": 249,
+                    "name": "Pilz.stl",
+                    "triangle_count": 24
+                },
+                {
+                    "bbox": {
+                        "depth": 22.627412796020508,
+                        "height": 7.6999969482421875,
+                        "width": 22.627418518066406,
+                        "x": 23.999990463256836,
+                        "y": 85.68294525146484,
+                        "z": 0.0
+                    },
+                    "id": 205,
+                    "name": "Zugentlastung.stl",
+                    "triangle_count": 620
+                },
+                {
+                    "bbox": {
+                        "depth": 10.999998092651367,
+                        "height": 3.1000003814697266,
+                        "width": 14.0,
+                        "x": 24.0,
+                        "y": 50.68294143676758,
+                        "z": 0.0
+                    },
+                    "id": 216,
+                    "name": "USB_Klappe.stl",
+                    "triangle_count": 92
+                },
+                {
+                    "bbox": {
+                        "depth": 7.037008762359619,
+                        "height": 9.900001525878906,
+                        "width": 7.037009239196777,
+                        "x": 195.04571533203125,
+                        "y": 29.39896583557129,
+                        "z": 0.0
+                    },
+                    "id": 227,
+                    "name": "Lichtleiter_L.stl",
+                    "triangle_count": 252
+                },
+                {
+                    "bbox": {
+                        "depth": 7.037009239196777,
+                        "height": 9.900001525878906,
+                        "width": 7.0370073318481445,
+                        "x": 54.39354705810547,
+                        "y": 29.616865158081055,
+                        "z": 0.0
+                    },
+                    "id": 238,
+                    "name": "Lichtleiter_R.stl",
+                    "triangle_count": 252
+                }
+            ],
+            "sliced_time": 7838,
+            "sliced_time_with_cache": 4482,
+            "total_predication": 38842.44921875,
+            "triangle_count": 54656,
+            "warning_message": ""
+        }
+    ],
+    "sparse_infill_density": 15.0,
+    "upward_compatible_machine": [
+        "Bambu Lab H2D 0.4 nozzle",
+        "Bambu Lab H2D Pro 0.4 nozzle",
+        "Bambu Lab H2S 0.4 nozzle",
+        "Bambu Lab P2S 0.4 nozzle",
+        "Bambu Lab H2C 0.4 nozzle",
+        "Bambu Lab X2D 0.4 nozzle",
+        "Bambu Lab A2L 0.4 nozzle"
+    ],
+    "wall_loops": 2
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Spaghetti-Wache alle 10 Minuten
+
+[Timer]
+# Erster Lauf 2 Minuten nach dem Anmelden, danach alle 10 Minuten.
+OnStartupSec=2min
+OnUnitActiveSec=10min
+AccuracySec=30s
+Unit=spaghetti-wache.service
+
+[Install]
+WantedBy=timers.target

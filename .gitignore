@@ -1,0 +1,42 @@
+# --- Zugangsdaten -----------------------------------------------------------
+# Es liegen keine im Repo (die Wrapper holen sie aus dem Vault), aber ein
+# vergessenes .env ist schnell angelegt.
+.env
+*.secret
+zugangsdaten*
+
+# --- Laufzeitdaten ----------------------------------------------------------
+# Enthalten die lokale Drucker-IP in Fehlermeldungen und Zeitstempel des
+# Haushalts. Gehoert nicht in ein oeffentliches Repo.
+protokoll.jsonl
+abbrueche.jsonl
+quittierungen.jsonl
+zustand.json
+journal/
+verlauf/
+befunde/
+
+# --- Kamerabilder -----------------------------------------------------------
+# Zeigen Drucker und Umgebung.
+*.jpg
+*.jpeg
+*.png
+
+# --- Grosse Binaerdaten -----------------------------------------------------
+# Projektspezifisch, zusammen ueber 90 MB. Die erzeugenden Skripte sind da,
+# die Ergebnisse muessen es nicht sein.
+*.gcode
+*.3mf
+*.stl
+*.step
+
+# --- Python -----------------------------------------------------------------
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# --- Werkzeugreste ----------------------------------------------------------
+*.bak
+slice.log
+*.tmp

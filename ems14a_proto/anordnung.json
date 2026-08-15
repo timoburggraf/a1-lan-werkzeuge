@@ -1,0 +1,54 @@
+{
+ "Gehaeuse_Korpus": [
+  40,
+  90
+ ],
+ "Gehaeuse_Front": [
+  85,
+  90
+ ],
+ "PCB_Halter": [
+  126,
+  80
+ ],
+ "Rastzunge": [
+  166,
+  67
+ ],
+ "Front_Blende": [
+  170,
+  155
+ ],
+ "Klemmen_Abdeckung": [
+  85,
+  193
+ ],
+ "Zugentlastung": [
+  125,
+  193
+ ],
+ "USB_Klappe": [
+  150,
+  193
+ ],
+ "Lichtleiter_L": [
+  172,
+  193
+ ],
+ "Lichtleiter_R": [
+  184,
+  193
+ ],
+ "Front_Schrift": [
+  85,
+  90
+ ],
+ "Blende_Schrift": [
+  170,
+  155
+ ],
+ "Klemmen_Schrift": [
+  85,
+  193
+ ]
+}

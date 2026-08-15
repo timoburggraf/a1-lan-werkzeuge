@@ -1,0 +1,40 @@
+13:50:28  === Warte auf freie Platte, dann Neustart von Schicht 1 ===
+13:50:58  Druck gestartet: schrifttest2
+13:51:00  PREPARE Schicht 0/29 0%
+13:59:30  RUNNING Schicht 1/29 8%
+14:08:21  !!! Stillstand: Schicht 1 seit 8 min
+14:10:28  RUNNING Schicht 2/29 22%
+14:15:24  RUNNING Schicht 3/29 28%
+14:15:52  Befund: ok (mittel) Auf dem Bett sind mehrere flache, saubere Plaettchen mit Brim in zwei Reihen erkennba
+14:20:07  RUNNING Schicht 4/29 35%
+14:21:18  Befund: ok (mittel) Auf dem Bett sind flache, saubere Plaettchen mit Brim erkennbar, keine Spaghetti oder
+14:24:49  RUNNING Schicht 5/29 41%
+14:26:40  Befund: ok (mittel) Die flachen Plaettchen mit Brim liegen in zwei Reihen sauber und gleichmaessig auf de
+14:29:31  RUNNING Schicht 6/29 47%
+14:30:13  RUNNING Schicht 7/29 48%
+14:31:38  RUNNING Schicht 8/29 50%
+14:32:06  Befund: ok (mittel) Auf dem Bett sind flache, saubere Plaettchen in zwei Reihen erkennbar, keine Spaghett
+14:32:48  RUNNING Schicht 10/29 52%
+14:33:30  RUNNING Schicht 11/29 52%
+14:34:13  RUNNING Schicht 12/29 53%
+14:34:55  RUNNING Schicht 13/29 54%
+14:35:38  RUNNING Schicht 14/29 55%
+14:37:02  RUNNING Schicht 15/29 57%
+14:37:31  Befund: ok (mittel) Die Plaettchen liegen flach und gleichmaessig mit sauberem Brim auf dem Bett, keine F
+14:38:13  RUNNING Schicht 17/29 59%
+14:39:38  RUNNING Schicht 18/29 61%
+14:40:21  RUNNING Schicht 19/29 62%
+14:41:46  RUNNING Schicht 20/29 63%
+14:42:56  Befund: ok (mittel) Die flachen Plaettchen liegen sauber und gleichmaessig auf dem Bett, keine Spaghetti 
+14:47:53  RUNNING Schicht 21/29 71%
+14:48:24  Befund: ok (hoch) Alle sechs Plaettchen liegen sauber in zwei Reihen mit intaktem Brim auf dem Bett, ke
+14:52:39  RUNNING Schicht 22/29 78%
+14:53:50  Befund: ok (mittel) Die flachen Plaettchen liegen in zwei sauberen Reihen auf dem Bett, keine Faeden oder
+14:57:23  RUNNING Schicht 23/29 84%
+14:59:15  Befund: ok (mittel) Die Plaettchen stehen sauber in zwei Reihen mit anliegendem Brim auf dem Bett, keine 
+15:02:47  RUNNING Schicht 24/29 91%
+15:04:39  Befund: ok (mittel) Die flachen Plaettchen liegen sauber in zwei Reihen auf dem Bett, keine Faeden oder a
+15:08:11  RUNNING Schicht 26/29 98%
+15:08:53  RUNNING Schicht 29/29 99%
+15:09:35  >>> Ende: FINISH bei Schicht 29
+15:10:01  === Schluss: FINISH, schrifttest2, Schicht 29/29, 100% ===

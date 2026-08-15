@@ -1,0 +1,20 @@
+[Unit]
+Description=Spaghetti-Wache — prueft Kamera und Zustand des A1 auf Fehldrucke
+Documentation=file:///home/timoburggraf/projects/BambuLab_AI/README.md
+# Ohne Netz kein Drucker und keine API.
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/timoburggraf/projects/BambuLab_AI/lauf.sh
+WorkingDirectory=/home/timoburggraf/projects/BambuLab_AI
+
+# Nur noch fuer die Desktop-Meldung und den Ton — Bilder kommen jetzt direkt
+# vom Drucker, nicht mehr vom Bildschirm.
+Environment=DISPLAY=:1
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+# Ein Lauf dauert normal ~20 s, mit Gegenprobe ~45 s. Haengt Drucker oder
+# API, lieber abbrechen als den naechsten Takt blockieren.
+TimeoutStartSec=300

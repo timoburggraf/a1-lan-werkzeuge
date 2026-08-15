@@ -1,0 +1,66 @@
+{
+ "T1_inlay_unten": {
+  "teile": [
+   [
+    "T1_inlay_unten_K",
+    1
+   ],
+   [
+    "T1_inlay_unten_S",
+    2
+   ]
+  ],
+  "pos": [
+   105,
+   120
+  ],
+  "text": "unten",
+  "art": "Inlay zweifarbig"
+ },
+ "T2_inlay_oben": {
+  "teile": [
+   [
+    "T2_inlay_oben_K",
+    1
+   ],
+   [
+    "T2_inlay_oben_S",
+    2
+   ]
+  ],
+  "pos": [
+   150,
+   120
+  ],
+  "text": "oben",
+  "art": "Inlay zweifarbig"
+ },
+ "T3_gravur_oben": {
+  "teile": [
+   [
+    "T3_gravur_oben_K",
+    1
+   ]
+  ],
+  "pos": [
+   105,
+   165
+  ],
+  "text": "oben",
+  "art": "nur Gravur"
+ },
+ "T4_gravur_unten": {
+  "teile": [
+   [
+    "T4_gravur_unten_K",
+    1
+   ]
+  ],
+  "pos": [
+   150,
+   165
+  ],
+  "text": "unten",
+  "art": "nur Gravur"
+ }
+}

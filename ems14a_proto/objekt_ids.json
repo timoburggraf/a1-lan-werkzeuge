@@ -1,0 +1,12 @@
+{
+ "Gehaeuse_Korpus": 8,
+ "Gehaeuse_Front": 12,
+ "PCB_Halter": 16,
+ "Rastzunge": 20,
+ "Front_Blende": 24,
+ "Klemmen_Abdeckung": 28,
+ "Zugentlastung": 32,
+ "USB_Klappe": 36,
+ "Lichtleiter_L": 40,
+ "Lichtleiter_R": 44
+}

@@ -1,0 +1,60 @@
+{
+    "error_string": "Success.",
+    "export_time": 0,
+    "layer_height": 0.11999999731779099,
+    "plate_index": 0,
+    "prepare_time": 55,
+    "return_code": 0,
+    "sliced_plates": [
+        {
+            "feature_type_times": {
+                "Bottom surface": 85.73311614990234,
+                "Bridge": 213.8885955810547,
+                "Brim": 66.71240997314453,
+                "Custom": 393.05963134765625,
+                "Flush": 25.0,
+                "Gap infill": 360.96075439453125,
+                "Inner wall": 2672.112060546875,
+                "Internal solid infill": 854.3138427734375,
+                "Outer wall": 5952.2958984375,
+                "Overhang wall": 69.00458526611328,
+                "Sparse infill": 1783.1488037109375,
+                "Top surface": 181.31980895996094,
+                "Travel": 2120.245361328125,
+                "Undefined": 2103.35888671875
+            },
+            "filament_change_times": 0,
+            "filaments": [
+                {
+                    "filament_id": "GFL03",
+                    "id": 1,
+                    "main_used_g": 50.024322509765625,
+                    "total_used_g": 50.024322509765625
+                }
+            ],
+            "generate_support_material_time": 76,
+            "id": 1,
+            "infill_time": 255,
+            "layer_filament_change": 0,
+            "main_predication": 14334.4140625,
+            "make_perimeters_time": 240,
+            "obj_cached_cnt": 0,
+            "sliced_time": 1583,
+            "sliced_time_with_cache": 962,
+            "total_predication": 14760.587890625,
+            "triangle_count": 34068,
+            "warning_message": "It seems object Gehaeuse_Korpus has floating cantilever. Please re-orient the object or enable support generation."
+        }
+    ],
+    "sparse_infill_density": 15.0,
+    "upward_compatible_machine": [
+        "Bambu Lab H2D 0.4 nozzle",
+        "Bambu Lab H2D Pro 0.4 nozzle",
+        "Bambu Lab H2S 0.4 nozzle",
+        "Bambu Lab P2S 0.4 nozzle",
+        "Bambu Lab H2C 0.4 nozzle",
+        "Bambu Lab X2D 0.4 nozzle",
+        "Bambu Lab A2L 0.4 nozzle"
+    ],
+    "wall_loops": 2
+}

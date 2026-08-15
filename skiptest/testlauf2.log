@@ -1,0 +1,20 @@
+20:04:22  === Testlauf 2: Kette + Skip-Wirknachweis ===
+20:04:46  Start verweigert: Kamera-Freigabe verweigert: Die Druckplatte ist im Bild nicht erkennbar bzw. verdeckt, daher keine Freigabe.
+20:05:54  Start verweigert: Kamera-Freigabe verweigert: Die Druckplatte ist im Bild nicht erkennbar - zu sehen sind nur Umgebung, Werkstattwand und Druckerteile, daher keine Freigabe.
+20:07:00  Start verweigert: Kamera-Freigabe verweigert: Die Kamera zeigt nur die Umgebung bzw. eine hochgefahrene Baugruppe; die Druckplatte ist nicht einsehbar und kann daher nicht als leer beurteilt werden.
+20:08:28  === Testlauf 2: Kette + Skip-Wirknachweis ===
+20:09:04  Druck gestartet: Skiptest_final
+20:19:42  Schicht  2  s_obj=[]  Bild: schicht_02.jpg
+20:23:15  Schicht  5  s_obj=[]  Bild: schicht_05.jpg
+20:23:45  >>> H1: skip_objects fuer Wuerfel_3 (ID 105) bei Schicht 6
+20:23:47      Quittung: success | err_code: None | s_obj: []
+20:24:46  Schicht  8  s_obj=[105]  Bild: schicht_08_nach_skip.jpg
+20:26:40  Schicht 12  s_obj=[105]  Bild: schicht_12_nach_skip.jpg
+20:28:37  Schicht 16  s_obj=[105]  Bild: schicht_16_nach_skip.jpg
+20:30:17  Schicht 20  s_obj=[105]  Bild: schicht_20_nach_skip.jpg
+20:34:48  Schicht 25  s_obj=[105]  Bild: schicht_25_nach_skip.jpg
+20:36:40  >>> Druck beendet (FINISH) bei Schicht 25
+20:37:05  === Ende ===
+20:37:05  Zustand: FINISH, Skiptest_final, Schicht 25/25, 100%
+20:37:05  s_obj am Ende: [105]
+20:37:05  Bilder: /home/timoburggraf/projects/BambuLab_AI/skiptest/belege2
