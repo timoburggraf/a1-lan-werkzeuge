@@ -220,3 +220,50 @@ Nach dem ersten Fehlalarm (intakter Druck bei Schicht 4 abgebrochen, weil
 eigenmaechtiger Abbruch drei Bedingungen: beide Stufen einig, mindestens
 eine **"hoch"** sicher, und **ab Schicht 12**. Sonst nur Alarm mit Begruendung,
 warum nicht abgebrochen wurde.
+
+## Zwei Fallen beim Bauen der Projektdatei (16.08.2026)
+
+**1. Der Marker braucht seinen Namensraum.** `<metadata
+name="BambuStudio:3mfVersion">1</metadata>` allein genügt nicht — ohne
+
+```xml
+xmlns:BambuStudio="http://schemas.bambulab.com/package/2021"
+```
+
+im `<model>`-Tag ist `BambuStudio:` ein ungültiges XML-Präfix. Der Marker wird
+still verworfen, die eingebettete `project_settings.config` **nicht gelesen**,
+und der Slicer fällt auf Vorgaben zurück: Bett 35 °C, kein Startritual (`G29`
+0×, `M620` 0×), keine Stützen, ein Filament. Es gibt keine Fehlermeldung.
+Erkannt durch Vergleich mit einer Datei, die funktioniert hatte.
+
+**2. Filamentbezogen ist nicht, was mit `filament_` anfängt.** Der Slicer
+bricht sonst ab mit
+
+```
+Flush volumes matrix do not match to the correct size!
+run found error, return -100
+```
+
+Beim Zuschneiden einer 6-Filament-Konfiguration auf 2 wurden zunächst nur 86
+Vektoren erfasst — **63 weitere heißen anders** und blieben sechselementig:
+
+| Schlüssel | Einträge | was er ist |
+|---|---|---|
+| `flush_volumes_matrix` | n × n | Spülvolumen zwischen je zwei Filamenten |
+| `flush_volumes_vector` | 2 n | Spülvolumen je Filament |
+| `nozzle_temperature` | n | **Drucktemperatur je Filament** |
+| `textured_plate_temp` | n | **Betttemperatur je Filament** |
+| `fan_*`, `overhang_fan_*`, `slow_down_*` | n | Kühlung je Filament |
+
+Regel in `konfig_bauen.py`: zugeschnitten wird jede Liste der Länge n, n² oder
+2n — **außer** sie steht auf der Ausschlussliste. Dort stehen Listen, die
+zufällig gleich lang sind, aber nichts mit Filamenten zu tun haben:
+`printable_area`, `bed_exclude_area`, `head_wrap_detect_zone`,
+`upward_compatible_machine`, `different_settings_to_system`, `machine_max_*`.
+
+**3. Brim messen, nicht zählen.** `; FEATURE: Brim` ist keine Zusicherung: Am
+15.08. war das Label da und die Breite 0 (das Teil löste sich), am 16.08. war
+kein Label da und 4,6 mm Brim lagen trotzdem auf dem Bett. `pruefe_gcode.py`
+misst deshalb den Überstand der ersten Schicht gegen die **dritte** — nicht
+gegen `plate_1.json`, deren bbox oft ein Schablonenrest ist und dann negative
+Werte für Teile liefert, die nachweislich gehalten haben.

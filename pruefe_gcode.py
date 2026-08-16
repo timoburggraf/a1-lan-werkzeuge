@@ -99,11 +99,65 @@ def werkstueck_bbox(pfad):
         pj = json.loads(zipfile.ZipFile(pfad).read("Metadata/plate_1.json"))
     except Exception:
         return None
-    kaesten = [o["bbox"] for o in pj.get("bbox_objects", []) if o.get("bbox")]
+    # Der Wischturm ist kein Werkstueck: Wer ihn mitrechnet, misst den Brim
+    # gegen eine Kante, die 40 mm neben dem Teil liegt, und bekommt negative
+    # Ueberstaende.
+    kaesten = [o["bbox"] for o in pj.get("bbox_objects", [])
+               if o.get("bbox") and o.get("name") != "wipe_tower"]
     if not kaesten:
         return None
     return (min(k[0] for k in kaesten), min(k[1] for k in kaesten),
             max(k[2] for k in kaesten), max(k[3] for k in kaesten))
+
+
+def _schicht_bereich(g, nummer, naehe=None):
+    """Extrusionsbereich einer Schicht (x0,y0,x1,y1) oder None."""
+    xs, ys, x, y, lage = [], [], 0.0, 0.0, 0
+    for zeile in g.split("\n"):
+        if zeile.startswith("; CHANGE_LAYER"):
+            lage += 1
+            if lage > nummer:
+                break
+        if lage != nummer or not zeile.startswith(("G0 ", "G1 ")):
+            continue
+        mx = re.search(r"X([-\d.]+)", zeile)
+        my = re.search(r"Y([-\d.]+)", zeile)
+        me = re.search(r" E([\d.]+)", zeile)
+        if mx:
+            x = float(mx.group(1))
+        if my:
+            y = float(my.group(1))
+        if not (me and float(me.group(1)) > 0):
+            continue
+        if naehe and not (naehe[0] - 30 < x < naehe[2] + 30
+                          and naehe[1] - 30 < y < naehe[3] + 30):
+            continue
+        xs.append(x)
+        ys.append(y)
+    if not xs:
+        return None
+    return (min(xs), min(ys), max(xs), max(ys))
+
+
+def brim_breite(g):
+    """Wie weit reicht die erste Schicht ueber die Objektkontur hinaus?
+
+    Das FEATURE-Label allein taugt nicht: Am 15.08. war `; FEATURE: Brim`
+    vorhanden, die Breite aber 0 — das Teil loeste sich. Am 16.08. war es
+    umgekehrt: kein Label, aber 4.6 mm Brim lagen wirklich auf dem Bett.
+
+    Gemessen wird gegen die dritte Schicht statt gegen `plate_1.json`: deren
+    bbox ist oft ein Schablonenrest und liefert dann negative Ueberstaende
+    fuer Teile, die nachweislich gehalten haben.
+    """
+    kern = _schicht_bereich(g, 3)
+    if not kern:
+        return None
+    erste = _schicht_bereich(g, 1, naehe=kern)
+    if not erste:
+        return None
+    return max(kern[0] - erste[0], kern[1] - erste[1],
+               erste[2] - kern[2], erste[3] - kern[3])
 
 
 def werkstueck_objekte(pfad):
@@ -284,6 +338,12 @@ def pruefen(pfad, ams=None, material=None):
     # --- 7. Geometrie ----------------------------------------------------
     objekte = set(re.findall(r"unique label id:\s*(\d+)", g))
     f = collections.Counter(re.findall(r"; FEATURE: ([^\n]+)", g))
+    breite = brim_breite(g)
+    if breite is not None and breite < 0.5 and f.get("Brim", 0) == 0:
+        hinweise.append(
+            "Keine Haftungshilfe: die erste Schicht reicht nur %.1f mm ueber "
+            "die Objektkante. Bei kleiner Aufstandsflaeche loest sich das "
+            "Teil." % breite)
     # Klammern nur einfordern, wo Ueberspringen ueberhaupt Sinn ergibt:
     # bei einem einzigen Objekt gaebe es nichts zu skippen ausser dem
     # ganzen Druck, und Bambu setzt dort bewusst keine Klammern.
@@ -305,6 +365,7 @@ def pruefen(pfad, ams=None, material=None):
         "bett": bett[:1], "duese": duese[:1],
         "objekte": len(objekte),
         "brim": f.get("Brim", 0),
+        "brim_mm": breite,
         "stuetzen": sum(n for x, n in f.items() if "upport" in x),
         "wechsel": koerper.count("M620 S0A") + koerper.count("M620 S1A"),
     }

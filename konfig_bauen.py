@@ -22,7 +22,21 @@ Regeln beim Zuschneiden:
 """
 
 import json
-import math
+
+# Listen, die zufaellig so lang sind wie die Filamentzahl, aber NICHTS mit
+# Filamenten zu tun haben. Sie duerfen nicht zugeschnitten werden.
+KEINE_FILAMENTLISTEN = {
+    "printable_area", "bed_exclude_area", "head_wrap_detect_zone",
+    "upward_compatible_machine", "different_settings_to_system",
+    "extruder_offset", "thumbnails", "thumbnail_size",
+    "machine_max_acceleration_e", "machine_max_acceleration_extruding",
+    "machine_max_acceleration_retracting", "machine_max_acceleration_travel",
+    "machine_max_acceleration_x", "machine_max_acceleration_y",
+    "machine_max_acceleration_z", "machine_max_jerk_e", "machine_max_jerk_x",
+    "machine_max_jerk_y", "machine_max_jerk_z", "machine_max_speed_e",
+    "machine_max_speed_x", "machine_max_speed_y", "machine_max_speed_z",
+    "machine_min_extruding_rate", "machine_min_travel_rate",
+}
 
 
 def zuschneiden(konfig, n, farben=None):
@@ -40,7 +54,17 @@ def zuschneiden(konfig, n, farben=None):
                "matrix": [], "gruppiert": []}
 
     for s, v in list(k.items()):
-        if not s.startswith("filament_") or not isinstance(v, list):
+        if not isinstance(v, list) or s in KEINE_FILAMENTLISTEN:
+            continue
+        # Filamentbezogen ist NICHT nur, was mit "filament_" anfaengt: auch
+        # nozzle_temperature, textured_plate_temp, flush_volumes_matrix und
+        # saemtliche Luefterparameter haben einen Wert je Filament. Am
+        # 16.08.2026 hat der Slicer deshalb "Flush volumes matrix do not match
+        # to the correct size" geworfen — 69 Vektoren waren uebersehen worden,
+        # weil nur nach dem Namenspraefix gefiltert wurde.
+        passend = (s.startswith("filament_") or len(v) == alt_n
+                   or (alt_n and len(v) in (alt_n * alt_n, 2 * alt_n)))
+        if not passend:
             continue
         # Quadratische Matrix? (Spuelvolumen ist alt_n x alt_n)
         if alt_n and len(v) == alt_n * alt_n:
@@ -59,6 +83,8 @@ def zuschneiden(konfig, n, farben=None):
         if len(v) > n:
             k[s] = v[:n]
             bericht["gekuerzt"].append(s)
+            if not s.startswith("filament_"):
+                bericht.setdefault("ohne_praefix", []).append(s)
         elif len(v) < n:
             fuell = v[-1] if v else "0"
             k[s] = list(v) + [fuell] * (n - len(v))
@@ -73,7 +99,8 @@ def zuschneiden(konfig, n, farben=None):
 def pruefen(konfig):
     """Sind jetzt alle filament_*-Vektoren gleich lang? Rueckgabe: (ok, laengen)."""
     laengen = {s: len(v) for s, v in konfig.items()
-               if s.startswith("filament_") and isinstance(v, list)}
+               if isinstance(v, list) and s not in KEINE_FILAMENTLISTEN
+               and (s.startswith("filament_") or len(v) > 1)}
     n = len(konfig.get("filament_settings_id", []))
     # Matrizen duerfen n*n sein, alles andere muss n sein
     # Erlaubt: n (ein Wert je Filament), n*n (Matrix) oder n*m (Gruppen)
