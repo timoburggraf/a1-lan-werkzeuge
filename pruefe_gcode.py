@@ -269,6 +269,59 @@ def pruefen(pfad, ams=None, material=None):
                 "Sobald Stuetzen eingeschaltet werden, zieht der Auftrag "
                 "Fach %d (%s)." % (schluessel, nr, idx, art))
 
+    # --- Stuetzen: Luftspalt oder Fremdmaterial, eines von beidem ---------
+    # Am 16.08.2026 waren die Stuetzen nicht mehr vom Werkstueck zu loesen.
+    # Ursache: Die Parameter stammten aus dem PETG-Trennschicht-Rezept (dort
+    # ist z=0 richtig, weil PLA und PETG kaum haften), aber das PETG war
+    # entfernt worden. Uebrig blieb: kein Spalt, geschlossene Interface-
+    # Flaeche, verzahntes Muster — und dasselbe Material auf beiden Seiten.
+    if stuetzen_an:
+        z_ab = w("support_top_z_distance", vorgabe="0")
+        try:
+            z_ab = float(z_ab)
+        except (TypeError, ValueError):
+            z_ab = 0.0
+        # Fremdmaterial? Nur dann darf der Spalt entfallen.
+        nr_if = w("support_interface_filament", vorgabe="0")
+        try:
+            idx_if = int(nr_if) - 1
+        except (TypeError, ValueError):
+            idx_if = -1
+        objekt_typ = typen[0].upper() if typen else ""
+        fremd = (0 <= idx_if < anzahl
+                 and typen[idx_if].upper() != objekt_typ)
+        if z_ab < 0.05 and not fremd:
+            befunde.append(
+                "Stuetzen mit support_top_z_distance = %.2f, aber ohne "
+                "Trennmaterial (Interface-Filament %s). Ohne Spalt UND ohne "
+                "Fremdmaterial verschweisst die Stuetze mit dem Werkstueck "
+                "und ist nicht mehr loesbar. Entweder z >= 0.2 setzen oder "
+                "ein Fremdmaterial als Interface." % (z_ab, nr_if))
+        muster = w("support_interface_pattern", vorgabe="")
+        abstand = w("support_interface_spacing", vorgabe="0")
+        if not fremd:
+            if muster == "rectilinear_interlaced":
+                hinweise.append(
+                    "support_interface_pattern = rectilinear_interlaced "
+                    "verzahnt sich mit dem Werkstueck und hinterlaesst die "
+                    "schlimmsten Narben. Ohne Fremdmaterial ist `concentric` "
+                    "die leichter loesbare Wahl.")
+            try:
+                if float(abstand) < 0.2:
+                    hinweise.append(
+                        "support_interface_spacing = %s ergibt eine "
+                        "geschlossene Kontaktflaeche. Ohne Fremdmaterial "
+                        "0.4-0.6 mm setzen, sonst fehlt die Sollbruchstelle."
+                        % abstand)
+            except (TypeError, ValueError):
+                pass
+        if w("support_style", vorgabe="") == "tree_slim":
+            hinweise.append(
+                "support_style = tree_slim erzeugt viele duenne Aeste — an "
+                "feinen Rueckseitenstrukturen sind die spaeter nicht mehr zu "
+                "greifen. Fuer flache Funktionsteile `snug` mit "
+                "support_type `normal(auto)`.")
+
     if ams is not None and anzahl and len(ams) < len(gefordert):
         befunde.append(
             "ams_mapping hat %d Eintraege, der G-Code fordert %d Filamente."

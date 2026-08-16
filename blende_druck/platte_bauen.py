@@ -17,12 +17,13 @@ import zipfile
 
 # (Objektname, [(STL-Name, Extruder), ...])
 OBJEKTE = [
-    # Nur die Front_Blende: Traeger auf Extruder 1 (weiss), Schrift-Inlay auf
-    # Extruder 2 (schwarz). Druckorientierung: Sichtflaeche nach OBEN.
-    ("Front_Blende", [("Front_Blende", 1), ("Blende_Schrift", 2)]),
+    # Beide Teile der Frontgruppe: Traeger auf Extruder 1 (weiss), Schrift-
+    # Inlay auf Extruder 2 (schwarz). Beide mit Sichtflaeche nach OBEN.
+    ("Gehaeuse_Front", [("Gehaeuse_Front", 1), ("Front_Schrift", 2)]),
+    ("Front_Blende",   [("Front_Blende", 1), ("Blende_Schrift", 2)]),
 ]
 
-ZIEL = "blende_platte.3mf"
+ZIEL = "front_platte.3mf"
 
 
 def stl_lesen(pfad):
@@ -69,7 +70,7 @@ def bauen():
            ' xmlns:BambuStudio="http://schemas.bambulab.com/package/2021">',
            ' <metadata name="Application">BambuStudio-02.07.01.57</metadata>',
            ' <metadata name="BambuStudio:3mfVersion">1</metadata>',
-           ' <metadata name="Title">ems14a Front_Blende — zweifarbig, Sichtflaeche oben</metadata>',
+           ' <metadata name="Title">ems14a Frontgruppe — Gehaeuse_Front + Front_Blende, Sichtflaeche oben</metadata>',
            ' <metadata name="Designer">Timo Burggraf</metadata>',
            ' <resources>']
     einstellungen = ['<?xml version="1.0" encoding="UTF-8"?>', "<config>"]
